@@ -1,0 +1,4 @@
+baseURL = 'https://username.github.io/'
+languageCode = 'en-us'
+title = 'My New Hugo Project'
+theme = "LoveIt"
