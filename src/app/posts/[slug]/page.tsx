@@ -164,6 +164,10 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+export function generateStaticParams() {
+  return Object.keys(postsData).map((slug) => ({ slug }));
+}
+
 export default async function PostPage({ params }: PageProps) {
   const { slug } = await params;
   const post = postsData[slug];
