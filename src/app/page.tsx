@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const featuredPosts = [
   {
-    slug: "claudecode 安装教程",
+    slug: "claude-code-installation",
     title: "Claude Code 安装教程",
     excerpt: "本教程将指导你完成 Claude Code 的安装过程，包括系统要求、安装步骤、初始配置和快捷键速查。",
     date: "2026-03-03",

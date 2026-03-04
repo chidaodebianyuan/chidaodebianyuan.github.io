@@ -6,7 +6,7 @@ const postsData: Record<string, {
   tags: string[];
   content: React.ReactNode;
 }> = {
-  "claudecode 安装教程": {
+  "claude-code-installation": {
     title: "Claude Code 安装教程",
     date: "2026-03-03",
     tags: ["开发工具", "教程"],
@@ -397,7 +397,7 @@ interface PageProps {
 
 export function generateStaticParams() {
   return [
-    { slug: "claudecode 安装教程" },
+    { slug: "claude-code-installation" },
     { slug: "hello-world" },
     { slug: "nextjs-tutorial" },
     { slug: "my-dev-journey" },
