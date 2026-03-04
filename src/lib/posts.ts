@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import toml from 'toml';
 
 const postsDirectory = path.join(process.cwd(), 'content/posts');
 
@@ -31,7 +32,13 @@ export function getPostBySlug(slug: string): PostData | null {
   }
 
   const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const { data, content } = matter(fileContents);
+  const { data, content } = matter(fileContents, {
+    delimiters: '+++',
+    engines: {
+      toml: toml,
+    },
+    language: 'toml',
+  });
 
   return {
     slug: realSlug,
