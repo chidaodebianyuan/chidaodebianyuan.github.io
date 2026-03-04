@@ -1,37 +1,9 @@
 import Link from "next/link";
-
-const featuredPosts = [
-  {
-    slug: "claude-code-installation",
-    title: "Claude Code 安装教程",
-    excerpt: "本教程将指导你完成 Claude Code 的安装过程，包括系统要求、安装步骤、初始配置和快捷键速查。",
-    date: "2026-03-03",
-    tags: ["开发工具", "教程"],
-  },
-  {
-    slug: "hello-world",
-    title: "你好，世界！我的博客上线了",
-    excerpt: "这是我的第一篇博客文章。在这里，我将分享我的技术学习心得、生活感悟以及各种有趣的发现。",
-    date: "2026-03-03",
-    tags: ["生活", "开篇"],
-  },
-  {
-    slug: "nextjs-tutorial",
-    title: "Next.js 入门教程：从零开始搭建博客",
-    excerpt: "本文将详细介绍如何使用 Next.js 和 Tailwind CSS 快速搭建一个现代化的个人博客。",
-    date: "2026-03-02",
-    tags: ["技术", "Next.js"],
-  },
-  {
-    slug: "my-dev-journey",
-    title: "我的开发者之路",
-    excerpt: "回顾我成为一名开发者的历程，分享学习编程过程中的经验和教训。",
-    date: "2026-03-01",
-    tags: ["生活", "成长"],
-  },
-];
+import { getAllPosts } from "@/lib/posts";
 
 export default function Home() {
+  const featuredPosts = getAllPosts().slice(0, 3);
+
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-950">
       {/* Hero Section */}
@@ -96,8 +68,8 @@ export default function Home() {
                     <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors">
                       {post.title}
                     </h3>
-                    <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                      {post.excerpt}
+                    <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed line-clamp-2">
+                      {post.content.slice(0, 150).replace(/[#*`]/g, '').trim()}...
                     </p>
                   </div>
                 </Link>
