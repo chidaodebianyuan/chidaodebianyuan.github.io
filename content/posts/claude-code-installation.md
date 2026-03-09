@@ -9,175 +9,105 @@ tags = ['开发工具', '教程']
 
 Claude Code 是一个强大的 AI 编程助手，可以帮助你更高效地开发代码。本教程将指导你完成安装过程。
 
-## 系统要求
+## 安装 Claude Code
 
-在安装 Claude Code 之前，请确保你的系统满足以下要求：
+### macOS/Linux/Windows
 
-- **操作系统**：Windows 10+、macOS 10.15+ 或 Linux
-- **内存**：至少 4GB RAM
-- **网络**：需要稳定的互联网连接
-- **VS Code**：版本 1.80 或更高版本
+1. 安装或更新 Node.js（v18.0 或更高版本）。
 
-## 安装步骤
+2. 在终端中执行下列命令，安装 Claude Code。
 
-### 方法一：通过 VS Code 扩展市场安装（推荐）
+   ```
+   npm install -g @anthropic-ai/claude-code
+   ```
 
-1. **打开 VS Code**
-   - 启动 Visual Studio Code 编辑器
+3. 运行以下命令验证安装。若有版本号输出，则表示安装成功。
 
-2. **打开扩展市场**
-   - 点击左侧活动栏中的"扩展"图标（或按 `Ctrl+Shift+X` / `Cmd+Shift+X`）
+   ```
+   claude --version
+   ```
 
-3. **搜索 Claude Code**
-   - 在搜索框中输入 "Claude Code"
-   - 找到官方扩展（发布者为 Anthropic）
+## 在 Claude Code 中接入国产模型
 
-4. **安装扩展**
-   - 点击"安装"按钮
-   - 等待安装完成
+需要配置以下信息：
 
-5. **验证安装**
-   - 安装完成后，你应该能在 VS Code 的活动栏中看到 Claude Code 图标
+- **ANTHROPIC_BASE_URL**：设置为模型地址
+- **ANTHROPIC_AUTH_TOKEN**：设置为 API Key
+- **ANTHROPIC_MODEL**：设置为供应商支持的模型
 
-### 方法二：命令行安装
+### macOS/Linux/Windows
 
-如果你喜欢使用命令行，可以通过以下命令安装：
+1. 创建并打开配置文件 `~/.claude/settings.json`。
 
-```bash
-code --install-extension Anthropic.claude-code
-```
+   `~` 代表用户主目录。如果 `.claude` 目录不存在，需要先行创建。可在终端执行 `mkdir -p ~/.claude` 来创建。
 
-## 初始配置
+   ```
+   nano ~/.claude/settings.json
+   ```
 
-### 1. 获取 API Key
+2. 编辑配置文件。将 `YOUR_API_KEY` 替换为 Coding Plan 专属 API Key。
 
-Claude Code 需要 API Key 来连接 Anthropic 服务：
+   ```json
+   {
+       "env": {
+           "ANTHROPIC_AUTH_TOKEN": "YOUR_API_KEY",
+           "ANTHROPIC_BASE_URL": " ",
+           "ANTHROPIC_MODEL": " "
+       }
+   }
+   ```
 
-1. 访问 [Anthropic Console](https://console.anthropic.com)
-2. 登录你的账户（如果没有账户，需要先注册）
-3. 进入 "API Keys" 页面
-4. 点击 "Create Key" 创建新的 API Key
-5. 复制生成的 API Key
+3. 保存配置文件，重新打开一个终端即可生效。
 
-### 2. 配置 API Key
+4. 编辑或新增 `~/.claude.json` 文件，将 `hasCompletedOnboarding` 字段的值设置为 `true` 并保存文件。
 
-1. 在 VS Code 中打开 Claude Code 扩展
-2. 点击设置图标或进入扩展设置
-3. 在 "API Key" 字段中粘贴你的 API Key
-4. 保存配置
+   ```json
+   {
+     "hasCompletedOnboarding": true
+   }
+   ```
 
-### 3. 配置模型选择（可选）
-
-在扩展设置中，你可以选择：
-
-- **Claude 3 Sonnet**：平衡速度和质量
-- **Claude 3 Opus**：高质量输出
-- **Claude 3 Haiku**：快速响应
-
-根据你的需求选择合适的模型。
-
-## 快捷键速查表
-
-### Windows/Linux 快捷键
-
-| 功能 | 快捷键 |
-|------|--------|
-| 打开 Claude Code | `Ctrl+Shift+L` |
-| 打开扩展市场 | `Ctrl+Shift+X` |
-| 打开命令面板 | `Ctrl+Shift+P` |
-| 打开终端 | `Ctrl+Shift+\`` |
-| 新建终端 | `Ctrl+Shift+`` |
-| 关闭终端 | `Ctrl+Shift+P` → "Kill Terminal" |
-| 聊天窗口中发送消息 | `Ctrl+Enter` 或 `Shift+Enter` |
-| 清除对话历史 | `Ctrl+L`（在聊天窗口中） |
-
-### macOS 快捷键
-
-| 功能 | 快捷键 |
-|------|--------|
-| 打开 Claude Code | `Cmd+Shift+L` |
-| 打开扩展市场 | `Cmd+Shift+X` |
-| 打开命令面板 | `Cmd+Shift+P` |
-| 打开终端 | `Ctrl+`` ` |
-| 新建终端 | `Cmd+Shift+`` |
-| 关闭终端 | `Cmd+Shift+P` → "Kill Terminal" |
-| 聊天窗口中发送消息 | `Cmd+Enter` 或 `Shift+Enter` |
-| 清除对话历史 | `Cmd+L`（在聊天窗口中） |
-
-### 编辑器快捷键
-
-| 功能 | Windows/Linux | macOS |
-|------|---------------|-------|
-| 选中当前行 | `Ctrl+L` | `Cmd+L` |
-| 删除当前行 | `Ctrl+Shift+K` | `Cmd+Shift+K` |
-| 复制当前行 | `Ctrl+C`（选中后） | `Cmd+C`（选中后） |
-| 向上/下移动行 | `Alt+↑/↓` | `Option+↑/↓` |
-| 代码格式化 | `Shift+Alt+F` | `Shift+Option+F` |
-| 快速修复 | `Ctrl+.` | `Cmd+.` |
+   注意：`hasCompletedOnboarding` 作为顶层字段，请勿嵌套于其他字段。该步骤可避免启动 Claude Code 时报错：Unable to connect to Anthropic services。
 
 ## 使用 Claude Code
 
-### 基本使用
+1. 打开终端，并进入项目所在的目录。运行以下命令启动程序 Claude Code：
 
-1. **打开对话**
-   - 点击 VS Code 活动栏中的 Claude Code 图标
-   - 在侧边栏中打开聊天窗口
+   ```
+   cd path/to/your_project
+   claude
+   ```
 
-2. **提出问题**
-   - 在输入框中描述你的编程问题
-   - Claude Code 会提供代码建议或解决方案
+2. 启动后，需要授权 Claude Code 执行文件。
 
-3. **代码集成**
-   - 点击代码块右上角的"复制"或"插入"按钮
-   - 代码会自动插入到你的编辑器中
+3. 输入 `/status` 确认模型、Base URL、API Key 是否配置正确。
 
-### 快速命令
+4. 在 Claude Code 中对话。
 
-- `/explain` - 解释选中的代码
-- `/refactor` - 重构选中的代码
-- `/test` - 生成测试代码
-- `/document` - 为代码生成文档
+## 切换模型
 
-## 常见问题
+- **启动时切换**：在终端执行 `claude --model <模型名称>` 指定模型并启动 Claude Code，例如 `claude --model qwen3-coder-next`。
 
-### Q: 安装后无法连接怎么办？
+- **会话期间**：在对话框输入 `/model <模型名称>` 命令切换模型，例如 `/model qwen3-coder-next`。
 
-**A:** 检查以下几点：
-- 确保 API Key 正确无误
-- 检查网络连接
-- 尝试重启 VS Code
-- 查看扩展日志了解错误信息
+## 常见命令
 
-### Q: API Key 安全吗？
+| 命令       | 说明                                                                 | 示例                  |
+|------------|----------------------------------------------------------------------|-----------------------|
+| `/init`    | 在项目根目录生成 CLAUDE.md 文件，用于定义项目级指令和上下文。       | `/init`               |
+| `/status`  | 查看当前模型、API Key、Base URL 等配置状态。                         | `/status`             |
+| `/model <模型名称>` | 切换模型。                                                       | `/model qwen3-coder-next` |
+| `/clear`   | 清除对话历史，开始全新对话。                                         | `/clear`              |
+| `/plan`    | 进入规划模式，仅分析和讨论方案，不修改代码。                         | `/plan`               |
+| `/compact` | 压缩对话历史，释放上下文窗口空间。                                   | `/compact`            |
+| `/config`  | 打开配置菜单，可设置语言、主题等。                                   | `/config`             |
 
-**A:** 你的 API Key 存储在本地，不会被上传到其他服务器。但请勿将其分享给他人。
+更多命令与用法详情，请参考 Claude Code 官方文档。
 
-### Q: 如何更新 Claude Code？
+## 能力扩展
 
-**A:** 
-- VS Code 会自动检查更新
-- 或在扩展市场中手动点击"更新"按钮
+Claude Code 支持通过 MCP 和 Skills 扩展自身能力，例如调用联网搜索获取实时信息、使用图片理解 Skill 分析图像内容等。详情请参考最佳实践。
 
-### Q: 支持哪些编程语言？
-
-**A:** Claude Code 支持所有主流编程语言，包括：
-- Python、JavaScript/TypeScript、Java、C++、Go
-- Rust、PHP、Ruby、Swift、Kotlin 等
-
-## 性能优化建议
-
-1. **定期更新**：保持 VS Code 和 Claude Code 扩展为最新版本
-2. **清理缓存**：定期清除扩展缓存以提高性能
-3. **选择合适的模型**：根据任务复杂度选择不同的 AI 模型
-4. **控制上下文**：避免在对话中包含过多代码，这会影响响应速度
-
-## 卸载 Claude Code
-
-如果你需要卸载扩展：
-
-1. 打开 VS Code 扩展市场
-2. 找到 Claude Code 扩展
-3. 点击"卸载"按钮
 
 ## 获取帮助
 
