@@ -45,7 +45,7 @@ Claude Code 是一个强大的 AI 编程助手，可以帮助你更高效地开�
    nano ~/.claude/settings.json
    ```
 
-2. 编辑配置文件。将 `YOUR_API_KEY` 替换为 Coding Plan 专属 API Key。
+2. 编辑配置文件。
 
    ```json
    {
@@ -79,11 +79,14 @@ Claude Code 是一个强大的 AI 编程助手，可以帮助你更高效地开�
    ```
 
 2. 启动后，需要授权 Claude Code 执行文件。
+检查以下图片加载方式是否正确              
+![alt text](image-1.png)
 
 3. 输入 `/status` 确认模型、Base URL、API Key 是否配置正确。
+![alt text](image-2.png)
 
-4. 在 Claude Code 中对话。
-
+4. 恭喜你，在 Claude Code 中开始对话吧。
+![alt text](image-3.png)
 ## 切换模型
 
 - **启动时切换**：在终端执行 `claude --model <模型名称>` 指定模型并启动 Claude Code，例如 `claude --model qwen3-coder-next`。
