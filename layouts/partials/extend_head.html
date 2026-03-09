@@ -1,0 +1,25 @@
+{{- if or (.Params.math) (.Params.katex) }}
+<!-- MathJax -->
+<script type="text/javascript">
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    packages: ['base', 'ams'],
+    macros: {
+      softmax: '\\operatorname{softmax}',
+      score: '\\alpha'
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    ignoreClass: 'tex2jax_ignore'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-ams.js">
+</script>
+{{- end }}
