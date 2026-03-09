@@ -1,0 +1,83 @@
+baseURL = 'https://chidaodebianyuan.github.io/'
+languageCode = 'zh-cn'
+title = 'xyd 的博客'
+theme = 'PaperMod'
+
+[params]
+  env = "production"
+  defaultTheme = "auto"
+  description = "xyd 的个人博客 - 分享技术、生活与思考"
+  keywords = ["博客", "技术", "生活"]
+  author = "xyd"
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = false
+  ShowRssButton = true
+  ShowToc = true
+  TocOpen = true
+  TocSide = "left"
+  hidemeta = false
+  comments = false
+  disableHLJS = false
+  disableShare = false
+  disableSpecial1stPost = false
+  disableScrollToTop = false
+
+[params.cover]
+  hiddenFromHomePage = false
+  hiddenFromSocial = false
+  hiddenFromRSS = false
+
+[params.assets]
+  disableHLJS = false
+
+[params.label]
+  text = "xyd 的博客"
+  iconHeight = 35
+
+# 首页配置
+[params.homeInfoParams]
+  Title = "欢迎来到我的博客"
+  Content = "在这里分享技术、生活与思考。记录学习过程中的点滴，分享有趣的事物。"
+
+# 社交链接
+[[params.socialIcons]]
+  name = "github"
+  title = "GitHub"
+  url = "https://github.com/chidaodebianyuan"
+
+# 编辑链接
+[params.editPost]
+  URL = "https://github.com/chidaodebianyuan/chidaodebianyuan.github.io/tree/main/content"
+  Text = "在 GitHub 上编辑"
+  appendFilePath = true
+
+[[menu.main]]
+  name = "首页"
+  url = "/"
+  weight = 1
+
+[[menu.main]]
+  name = "文章"
+  url = "/posts/"
+  weight = 2
+
+[[menu.main]]
+  name = "标签"
+  url = "/tags/"
+  weight = 3
+
+[[menu.main]]
+  name = "关于"
+  url = "/about/"
+  weight = 4
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
