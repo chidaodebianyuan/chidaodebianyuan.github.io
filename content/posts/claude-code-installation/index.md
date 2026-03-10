@@ -93,6 +93,13 @@ Claude Code 是一个强大的 AI 编程助手，可以帮助你更高效地开�
 
 - **会话期间**：在对话框输入 `/model <模型名称>` 命令切换模型，例如 `/model qwen3-coder-next`。
 
+## 权限系统的设置
+这是 Claude Code 最烦人的地方：它对每件事都要请求权限。
+
+有一个解决方案：
+`claude --dangerously-skip-permissions`
+通过这条命令启动claude，会自动同意所有的权限请求！
+
 ## 常见命令
 
 | 命令       | 说明                                                                 | 示例                  |
